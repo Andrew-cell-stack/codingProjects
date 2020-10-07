@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;//Structures=and=Functions==================================
+
+struct Human {
+	string name;
+	int age;
+	string gender;
+	string job;
+};
+
+void setHuman(Human* human) {
+	
+	cout << "=================" << endl;
+	cout << "Enter a name: " << endl;
+	cin >> human->name;
+	cout << "Enter age: " << endl;
+	cin >> human->age;
+	cout << "Enter gender: " << endl;
+	cin >> human->gender; 
+	cout << "Enter a job: " << endl;
+	cin >> human->job;
+	cout << "=================" << endl;
+	cout << human->name << " is a " << human->age << " year old " << human->gender << " that works as a " << human->job << "!" << endl;
+	cout << "=================" << endl;
+}
+
+
+
+
+int main() {//Main=Code=========================================================
+	Human human;
+	 int humans = 0;
+
+	cout << "How many humans do you want to create: ";
+	cin >> humans;
+
+	for (int i = 0; i < humans; i++) {
+		cout << "Create human " << i + 1 << "!" << endl;
+		setHuman( &human );
+
+    
+	};
+	
+
+	cout << "Thank you for running this program!" << endl;
+	
+
+
+	return 0;
+}
