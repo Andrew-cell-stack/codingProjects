@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+	int years, months, weeks, days, hours, minutes;
+	long long seconds;
+	char again;
+	do {
+		
+		cout << "How many years would you like to enter: " << endl;
+		cin >> years;
+		cout << "How many months would you like to enter: " << endl;
+		cin >> months;
+		cout << "How many weeks would you like to enter: " << endl;
+		cin >> weeks;
+		cout << "How many days would you like to enter: " << endl;
+		cin >> days;
+		cout << "How many hours would you like to enter: " << endl;
+		cin >> hours;
+		cout << "How many minutes would you like to enter: " << endl;
+		cin >> minutes;
+		cout << "How many seconds would you like to enter: " << endl;
+		cin >> seconds;
+		weeks = weeks + (years * 52);
+		days = days + (months * 30) + (weeks * 7);
+		hours = hours + (days * 24);
+		minutes = minutes + (hours * 60);
+		seconds = seconds + (minutes * 60);
+		cout << "That time is " << seconds << " seconds long!" << endl;
+		cout << "-----------------" << endl;
+		cout << "Would you like to run again? (y or n)" << endl;
+		cin >> again;
+
+
+	} while (again == 'y');
+
+
+	cout << "Thank you for running this program!";
+
+
+
+
+
+
+	return 0;
+}
