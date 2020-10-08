@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+
+class Dog {
+public:
+	string name;
+	int age;
+	int paws;
+	double health;
+
+	void bark();
+	void growl();
+};
+
+void Dog::growl() {
+	cout << "Grrrr.r...RRR" << endl;
+
+}
+void Dog::bark() {
+	cout << "Woof Woof!" << endl;
+
+}
+
+
+
+int main() {
+
+	
+	Dog bob;
+
+	bob.bark();
+	bob.growl();
+
+
+
+
+	return 0;
+}
