@@ -1,0 +1,245 @@
+#include <iostream>
+#include <conio.h>
+#include <Windows.h>
+
+using namespace std;
+char again = 'y';
+bool gameOver;
+const int width = 20;
+const int height = 15;
+int x, y, fruitX, fruitY, score;
+int tailX[100], tailY[100];
+int nTail = 0;
+enum edirection{ Stop = 0, Left, Right, Up, Down};
+edirection dir;
+
+
+
+
+void Setup() {
+
+	gameOver = false;
+	dir = Stop;
+	x = width / 2;
+	y = height / 2;
+	fruitX = rand() % width;
+fruitY = rand() % height;
+score = 0;
+
+}
+void Draw() {
+
+	system("cls");
+	for (int w = 0; w <= width; w++)
+	{
+		cout << '#';
+	}
+	cout << endl;
+
+	for (int h = 0; h < height; h++)
+	{
+		for (int w = 0; w < width + 2; w++)
+		{
+			
+			if (w == 0)
+			{
+				cout << '#';
+			}
+			if (h == y && w == x)
+			{
+				cout << '@';
+			}
+			else if (h == fruitY && w == fruitX)
+			{
+				cout << '$';
+			}
+			else {
+				bool printO = false;
+				for (int k = 0; k < nTail; k++)
+				{
+					if ((tailX[k] == w) && (tailY[k] == h))
+					{
+
+						cout << "o";
+						printO = true;
+					}
+				}
+				if (!printO)
+					cout << " ";
+			}
+				
+
+			
+			
+
+		if (w == width - 2)
+		{
+		    cout << '#';
+		}
+
+				
+				
+			
+		}
+		cout << endl;
+	}
+
+
+
+	for (int w = 0; w < width + 1; w++)
+	{
+		cout << '#';
+	}
+	cout << endl;
+	cout << "Score: " << score;
+	cout << endl;
+	cout << "(Press 'X' to exit program)";
+
+
+}
+	void Input() {      
+
+
+		if (_kbhit())
+		{
+			switch (_getch())
+			{
+			case 'a':
+				dir = Left;
+				break;
+
+			case 'd':
+				dir = Right;
+				break;
+			case 'w':
+				dir = Up;
+				break;
+			case 's':
+				dir = Down;
+				break;
+			case 'x':
+				gameOver = true;
+			}
+		}
+
+	}
+
+
+		void Logic() {
+			
+			int prevX = tailX[0];
+			int prevY = tailY[0];
+			int prev2X, prev2Y;
+			tailX[0] = x;
+			tailY[0] = y;
+			
+			for (int i = 1; i < nTail; i++)
+			{
+				prev2X = tailX[i];
+				prev2Y = tailY[i];
+				tailX[i] = prevX;
+				tailY[i] = prevY;
+				prevX = prev2X;
+				prevY = prev2Y;
+			}
+
+			
+			switch (dir)
+			{
+			case Left:
+				x--;
+				break;
+
+			case Right:
+				x++;
+				break;
+
+			case Up:
+				y--;
+				break;
+
+			case Down:
+				y++;
+				break;
+
+			}
+			if (x == width)
+				
+			{
+				x = 0;
+			}
+			else if (x < 0)
+			{
+				x = width;
+			}
+			else if (y < 0)
+
+			{
+				y = height;
+			}
+			else if (y == height)
+			{
+				y = 0;
+			}
+			if (x == fruitX && y == fruitY)
+			{
+				score++;
+				fruitX = rand() % width;
+				fruitY = rand() % height;
+				nTail++;
+			}
+			for (int i = 0; i < nTail; i++)
+			{
+				if (tailX[i] == x && tailY[i] == y)
+				{
+					gameOver = true;
+				}
+			}
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		int main()
+		{
+
+
+			Setup();
+			do {
+				if (!gameOver) {
+
+					Draw();
+					Input();
+					Logic();
+					Sleep(10);
+				}
+				else {
+
+
+					system("cls");
+
+					cout << "You lost with " << score << " points!" << endl;
+					cout << "----------------------" << endl;
+					cout << "Do you want to play again? (y or n)";
+					cin >> again;
+				}
+				
+			} while (again == 'y');
+			
+			 
+
+			 return 0;
+		}
