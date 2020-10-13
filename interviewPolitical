@@ -1,1 +1,256 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <Windows.h>
+using namespace std;//==Variables===================
+short op1;
+string answers[5];
+string answer;
+string fName;
+char menu = 'a';
+string lName;
+string name;
+short month, day, year;
+short date;
+bool exitP = false;
+bool questionsEntered = false;
+const char slash = '/';
+//======================Functions===================
 
+
+
+int Menu()
+{
+	
+	cout << "-----------" << endl;
+	cout << "-[0]-Exit--" << endl;
+	cout << "-[1]-Name--" << endl;
+	cout << "-[2]-Date-of-birth" << endl;
+	cout << "-[3]-Show--" << endl;
+	cout << "-[4]-Clear-" << endl;
+	cout << "-[5]-Interview" << endl;
+	cout << "-----------" << endl;
+	cin >> op1;
+
+	return op1;
+}
+void Clear()
+{
+
+	fName = " ";
+	lName = " ";
+	name = " ";
+	answer = " ";
+	month = 0;
+	day = 0;
+	year = 0;
+	date = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		answers[i] = " ";
+
+
+	}
+}
+void Show()
+{
+	
+	cout << "-----------" << endl;
+	cout << "All-information" << endl;
+	cout << "-----------" << endl;
+	cout << "Name: " << name << endl;
+	cout << "-------" << endl;
+	cout << "Date-of-birth: " << month << " / " << day << " / " << year << endl;
+	for (int i = 0; i < 6; i++)
+	{
+		if (!(i == 0))
+		{
+
+			cout << "------" << endl;
+			cout << "Question " << i << ". " << answers[i] << endl;
+		}
+
+	}
+	cout << "------" << endl;
+	cout << "Enter any key to go to the menu!" << endl;
+	cin >> menu;
+}
+
+void Name()
+{
+
+	cout << "----------------------------- " << endl;
+	cout << "Please-enter-first-or-full-name-here: ";
+	cin >> fName;
+	cout << "Please-enter-last-name-here: ";
+	cin >> lName;
+
+	name = fName + "-" + lName;
+
+
+}
+void Date()
+{
+	
+	cout << "---------------------------" << endl;
+	cout << "Please-enter-month-here: ";
+	cin >> month;
+	cout << "Please-enter-day-here: ";
+	cin >> day;
+	cout << "Please-enter-year-here-: ";
+	cin >> year;
+	date = month + day + year;
+
+}
+void Interview()
+{
+
+
+
+
+
+
+	for (int a = 0; a < 6; a++)
+	{
+
+		switch (a)
+		{
+		case 1:
+		{
+			cout << "1. " << "How has your quarantine been? : ";
+			break;
+		}
+		case 2:
+		{
+			cout << "2. " << "What do you think about masks? : ";
+			break;
+		}
+		case 3:
+		{
+			cout << "3. " << "How would we be able to resolve your issues regarding quaratine? : ";
+			break;
+		}
+		case 4:
+		{
+			cout << "4. " << "Who do you believe the next president will be? : ";
+			break;
+		}
+		case 5:
+		{
+			cout << "5. " << "Are you a liberal, conservative, or other? : ";
+			break;
+		}
+
+		
+		}
+		getline(cin, answer);
+		answers[a] = answer;
+
+
+
+
+
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+void Option() {
+	system("cls");
+	int option = op1;
+	switch (option)
+	{
+	case 0:
+	{
+		exitP = true;
+		break;
+	}
+	case 1:
+		Name();
+		break;
+	case 2:
+		Date();
+		break;
+	case 3:
+	{
+		Show();
+		break;
+	}
+	case 4:
+	{
+		Clear();
+		break;
+	}
+	case 5:
+	{
+		Interview();
+		break;
+	}
+	
+	default:
+		cout << "That input is not recognized..." << endl;
+		cout << "Enter 11 to return to menu..." << endl;
+		cin >> op1;
+		break;
+	}
+
+
+
+
+}
+
+
+
+
+
+
+int main() {//Procedural====Code=======================
+
+
+
+	while (exitP == false)
+	{
+
+		
+		system("cls");
+			Menu();
+			Option();
+		
+		
+
+
+
+
+
+	}
+	
+	
+
+
+
+
+
+
+
+
+
+	return 0;
+}
