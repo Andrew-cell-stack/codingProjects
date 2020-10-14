@@ -1,0 +1,280 @@
+#include <iostream>
+#include <Windows.h>
+#include <conio.h>
+using namespace std;//Variables========
+short tunnel, score, mode, item;
+double credits = 10;
+const int width = 25, height = 24;
+bool hat, speed, skin;
+bool gameOver;
+bool lost;
+int fx, fy, tx, ty;
+enum dir {Up, Down, Right};
+dir direct;
+//===================Functions=========
+
+void Store()
+{
+	system("cls");
+	do {
+		cout << "-----------" << endl;
+		cout << "---Store---" << endl;
+		cout << "-----------" << endl;
+		cout << "Hat(3)--[1]" << endl;
+		cout << "Speed(2)[2]" << endl;
+		cout << "Skin(5)-[3]" << endl;
+		cout << "Exit----[4]" << endl;
+		cout << "Credits--(" << credits << ")" << endl;
+		cin >> item;
+		switch (item)
+		{
+		case 1:
+		{
+			if (credits >= 3)
+			{
+				hat = true;
+				credits = credits - 3;
+			}
+		}
+		case 2:
+		{
+			if (credits >= 2)
+			{
+				speed = true;
+				credits = credits - 2;
+			}
+		}
+		case 3:
+		{
+			if (credits >= 5)
+			{
+				skin = true;
+				credits = credits - 5;
+			}
+		}
+		case 4:
+		{
+			system("cls");
+		}
+		}
+	} while (!(item == 4));
+}
+
+void Fall()
+{
+	fy++;
+	tx--;
+}
+
+void Flap()
+{
+	fy--;
+	tx--;
+}
+void Menu()
+{
+	credits = credits + (score / 2);
+	cout << "------------" << endl;
+	cout << "Flappy-Bird-" << endl;
+	cout << "------------" << endl;
+	cout << "Start----[1]" << endl;
+	cout << "Continue-[2]" << endl;
+	cout << "Store----[3]" << endl;
+	cout << "Exit-----[4]" << endl;
+	cout << "Credits--(" << credits << ")" << endl;
+	cout << "------------" << endl;
+	cin >> mode;
+	switch (mode)
+	{
+	case 1:
+	{
+		gameOver = false;
+		break;
+	}
+	case 2:
+	{
+		gameOver = false;
+		break;
+	}
+	case 3:
+	{
+		Store();
+		break;
+	}
+	case 4:
+	{
+		gameOver = true;
+		break;
+	}
+	}
+}
+void Input()
+{
+	if (_kbhit())
+	{
+		switch (_getch())
+		{
+		case 32:
+			Flap();
+			break;
+		case 'e':
+			lost = false;
+			system("cls");
+			Menu();
+			break;
+		}
+
+
+	}
+	else
+		Fall();
+
+}
+void Contact()
+{
+	if (fx < 0 || fx > width || fy < 0 || fy > height)
+	{
+		lost = true;
+		system("cls");
+		Menu();
+	}
+	else if ((fx == tx) && (fy == ty || fy == ty + 1 || fy == ty + 2))
+	{
+		score++;
+		credits = score / 2;
+	}
+	else if ((fx == tx) && (!(fy == ty || fy == ty + 1 || fy == ty + 2)))
+	{
+		lost = true;
+		system("cls");
+		Menu();
+	}
+}
+void Draw()
+{
+
+	if (lost == true)
+	{
+		score = 0;
+	}
+	system("cls");
+	for (int w = 0; w < width; w++)
+	{
+		cout << "#";
+	}
+	cout << endl;
+
+	for (int h = 0; h < height; h++)
+	{
+
+		for (int w = 0; w < width; w++)
+		{
+			if (tx < 0)
+			{
+				ty = rand() % height;
+				tx = width;
+
+			}
+			else if (w == 0)
+			{
+				cout << "#";
+			}
+			else if (w == width - 1)
+			{
+				cout << "#";
+			}
+			else if ((w == fx + 1 && h == fy - 1) && (hat == true))
+			{
+				cout << "^";
+            }
+			else if ((w == fx && h == fy) && skin == true)
+			{
+
+				cout << "(*)>";
+
+			}
+			else if (w == fx && h == fy)
+			{
+				
+					cout << "[']>";
+
+			}
+			else if ((w == fx + 1 && h == fy - 1) && (hat == true))
+			{
+
+			}
+			else if (w == fx + 1 && h == fy)
+			{
+
+			}
+			else if (w == fx + 2 && h == fy)
+			{
+
+			}
+			else if (w == fx + 3 && h == fy)
+			{
+
+			}
+			else if (w == tx && h == ty)
+			{
+				cout << " ";
+			}
+			else if (w == tx && h == ty + 1)
+			{
+				cout << " ";
+			}
+			else if (w == tx && h == ty + 2)
+			{
+				cout << " ";
+			}
+			else if (w == tx)
+			{
+				cout << "#";
+			}
+			else {
+				cout << " ";
+			}
+
+		}
+		cout << endl;
+	}
+	for (int w = 0; w < width; w++)
+
+	{
+		cout << "#";
+
+	}
+	cout << endl;
+	cout << "Score: " << score << endl;
+	cout << "-------" << endl;
+	cout << "(Press [e] to exit)" << endl;
+}
+void Setup()
+{
+	tx = width;
+	ty = rand() % height;
+	fx = width / 3;
+	fy = height / 2;
+	score = 0;
+	
+}
+
+int main() {//==========Procedural=Code=======
+	
+	Setup();
+	Menu();
+	while (gameOver == false)
+	{
+
+		Draw();
+		Input();
+		Contact();
+	}
+	cout << "Game Over!";
+
+
+
+
+
+	return 0;
+}
