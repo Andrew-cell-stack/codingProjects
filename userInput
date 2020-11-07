@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        byte choice;
+        do {
+            System.out.println("Option 1: Green");
+            System.out.println("Option 2: Yellow");
+            System.out.println("Option 3: Red");
+            System.out.println("Option 4: Blue");
+            System.out.println("Choose your option");
+            Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+     choice = myObj.nextByte();  // Read user input
+     myObj.close();
+       } while (choice < 1 || choice > 4);
+       switch(choice)
+       {
+           case 1:
+           System.out.println("Very green");
+           break;
+           case 2:
+           System.out.println("Very Yellowww");
+           break;
+           case 3:
+           System.out.println("Redd");
+           break;
+           case 4:
+           System.out.println("nice and blue");
+       }
+       
+    }
+}
