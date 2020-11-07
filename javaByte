@@ -1,0 +1,8 @@
+public class HelloWorld
+{
+    public static void main(String[] args)
+    {
+    byte bob = 7;
+    System.out.println(bob + "That was bob...");
+    }
+}
