@@ -1,8 +1,24 @@
-public class HelloWorld
+import java.util.Scanner;
+
+public class primeNumber
 {
     public static void main(String[] args)
     {
-       int num = 68;//any number
+        int num;
+        do {
+            System.out.println("Enter a number to check if its prime");
+            System.out.println("-------------");
+       Scanner Scanner1 = new Scanner(System.in);  
+     num = Scanner1.nextInt();  
+     if (num == 1)
+     {
+    System.out.println("1 is not a prime number");
+     }
+     else if (num == 2)
+     {
+         System.out.println("2 is a prime number");
+     }
+     else {
        boolean isPrime = true;
        System.out.println("Number is " + num);
        for (int i = 2; i < num; i++)
@@ -10,6 +26,7 @@ public class HelloWorld
            if (num % i == 0)
            {
                System.out.println("That number is not prime and divisible by " + i);
+               System.out.println("-------------");
                isPrime = false;
            }
            else if (isPrime && (i == num - 1))
@@ -17,6 +34,10 @@ public class HelloWorld
                System.out.println("That number is prime");
            }
        }
+       
+    }
+    } while (num != 0);
+    
        
     }
 }
