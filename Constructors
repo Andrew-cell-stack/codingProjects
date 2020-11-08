@@ -1,0 +1,42 @@
+
+public class Constructor
+{
+    public static void main(String[] args)
+    {
+     
+        class Zebra
+        {
+            byte age;
+            String name;
+//constructor
+            Zebra()
+            {
+                System.out.println("I am a Zebra, *Zebra noises*.");
+            }
+            void talk(String Pname, byte Page)
+            {
+                age = Page;
+                name = Pname;
+                System.out.println("I am " + age + " years old and my name is " + name + ".");
+            }
+            void ageUp()
+            {
+             age++;
+                System.out.println("I have aged, I am now " + (byte)age + " years old.");
+            }
+        }
+        Zebra zebra1 = new Zebra();
+        zebra1.talk("Bobby", (byte)5);
+        zebra1.ageUp();
+        Zebra zebra2 = new Zebra();
+        zebra2.talk("Thompson", (byte)8);
+        zebra2.ageUp();
+        Zebra zebra3 = new Zebra();
+        zebra3.talk("Gary", (byte)65);
+        zebra3.ageUp();
+      
+    
+
+
+    }
+}
