@@ -1,0 +1,45 @@
+
+public class multiArrays
+{
+
+public static void main(String[] args)
+{
+
+    class Human
+    {
+        String name;
+        byte age;
+        boolean isMale;
+    }
+
+    Human human1 = new Human();
+    human1.name = "Larry";
+    human1.age = 17;
+    human1.isMale = true;
+    System.out.println(human1.name + " " + human1.age + " " + human1.isMale);
+    
+    Human human2 = new Human();
+    human2.name = "Cassidy";
+    human2.age = 15;
+    human2.isMale = false;
+    System.out.println(human2.name + " " + human2.age + " " + human2.isMale);
+
+    class Dog
+    {
+        String name;
+        byte bite;
+        String breed;
+        boolean isFurry;
+    }
+
+    Dog dog1 = new Dog();
+    dog1.name = "Barry";
+    dog1.bite = 6;
+    dog1.breed = "Terrier";
+    dog1.isFurry = true;
+    System.out.println(dog1.name + " " + dog1.bite + " " + dog1.breed + " " + dog1.isFurry);
+}
+
+
+
+}
