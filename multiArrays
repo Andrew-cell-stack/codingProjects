@@ -1,0 +1,27 @@
+
+
+public class multiArrays
+{
+
+public static void main(String[] args)
+{
+int fallafel[][][] = new int[3][4][5];
+//  fallafel[i][j][h]
+for (int i = 0; i < 3; i++)
+{
+    for (int j = 0; j < 4; j++)
+    {
+        for (int h = 0; h < 5; h++)
+        {
+           System.out.println();
+            System.out.print(fallafel[i][j][h] + " , ");
+        }
+    }
+    System.out.println();
+}
+    
+}
+
+
+
+}
