@@ -1,0 +1,78 @@
+
+public class Getters_Setters
+{
+    public static void main(String[] args)
+    {
+        class BankAccount
+        {
+            String accountNum;
+            long balance;
+            String userName;
+            String address;
+            int age;
+            public String getaccountNum()
+            {
+
+                return accountNum;
+            }
+            public void setaccountNum(String accountNum)
+            {
+            this.accountNum = accountNum;
+            }
+            public void setuserName(String userName)
+            {
+            this.userName = userName;
+            }
+            public String getuserName()
+            {
+
+                return userName;
+            }
+            public void setaddress(String address)
+            {
+            this.address = address;
+            }
+            public String getaddress()
+            {
+
+                return address;
+            }
+            public int getage()
+            {
+
+                return age;
+            }
+            public void setage(int age)
+            {
+                this.age = age;
+            }
+            public long getbalance()
+            {
+
+                return balance;
+            }
+            public void setbalance(long balance)
+            {
+                this.balance = balance;
+            }
+            public void addbalance(long balance)
+            {
+                this.balance += balance;
+            }
+            BankAccount(String accountNum, long balance, String userName, int age, String address)
+            {
+             this.accountNum = accountNum;
+             this.balance = balance;
+             this.userName = userName;
+             this.age = age;
+             this.address = address;
+            }
+
+        }
+        BankAccount bobAccount = new BankAccount("24", 10000033, "Bobby Richardson", 43, "38 Foarson rd.");
+        bobAccount.setbalance(2100100100);
+        bobAccount.addbalance(-600);
+         System.out.println("My balance is " + bobAccount.getbalance() + " dollars");
+
+    }
+}
