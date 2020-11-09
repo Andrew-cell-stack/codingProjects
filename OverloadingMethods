@@ -1,0 +1,40 @@
+public class OverloadedMethod
+{
+    public static void main(String[] args)
+    {
+        
+        class calculate
+        {
+        int findSum(int a, int b)
+        {
+            int sum = a + b;
+
+            return sum;
+        }
+        int findSum(int a, int b, int c)
+        {
+            int sum = a + b + c;
+
+            return sum;
+        }
+        int findSum(int a, int b, int c)
+        {
+            int sum = a + b + c;
+
+            return sum;
+        }
+        void findSum()
+        {
+            System.out.println("You did not enter parameters...");
+        }
+
+
+
+        }
+        caculate c1 = new calculate();
+        System.out.println(calculate.findSum(3, 9));
+
+        System.out.println(calculate.findSum(3, 9, 2));
+
+    }
+}
