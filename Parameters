@@ -1,0 +1,68 @@
+
+public class Parameter
+{
+    public static void main(String[] args)
+    {
+        Tiger tiger1 = new Tiger("Harrison", 31);
+        tiger1.talk();
+        tiger1.setAge(43);
+        tiger1.setName("Bobby");
+        tiger1.talk1();
+        Tiger tiger2 = new Tiger(tiger1);
+        tiger2.talk();
+    }
+}
+class Tiger
+{
+    String name;
+    int age;
+
+    Tiger(String name, int age)
+    {
+        this.name = name;
+        this.age = age;
+    }
+    Tiger()
+    {
+        this.name = null;
+        this.age = 0;
+    }
+    Tiger(Tiger object)
+    {
+     this.name = object.name;
+     this.age = object.age;
+    }
+
+    void talk()
+    {
+     System.out.println("I am a tiger, my name is " + this.getName() + " and I am " + this.getAge() + " years old.");
+    }
+    void talk1()
+    {
+        System.out.println("My name is now " + this.getName() + ", and I am now " + this.getAge() + " years old.");
+    }
+    public String getName()
+    {
+        if (name == null)
+        {
+            this.name = "Bildew";
+        }
+        return name;
+    }
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    public int getAge()
+    {
+        if (this.age == 0)
+        {
+            this.age = 5;
+        }
+        return age;
+    }
+    public void setAge(int age)
+    {
+        this.age = age;
+    }
+}
