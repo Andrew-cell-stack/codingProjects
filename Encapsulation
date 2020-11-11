@@ -1,0 +1,33 @@
+class Account
+{
+    private int balance = 1000;
+
+    void deposit(int money)
+    {
+        balance += money;
+        
+    }
+
+    void setBalance(int balanceP)
+    {
+        this.balance = balanceP;
+    }
+    int getBalance()
+    {
+
+        return balance;
+    }
+}
+
+public class Encapsulation
+{
+    public static void main(String[] args)
+    {
+    Account account1 = new Account();
+    account1.setBalance(1500);
+    System.out.println(account1.getBalance());
+    account1.deposit(800);
+    System.out.println(account1.getBalance());
+
+    }
+}
